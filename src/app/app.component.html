@@ -20,7 +20,9 @@
 
 <div class="ui grid posts">
   <app-article
-    *ngFor="let article of sortedArticles()"
-    [article]="article">
+    *ngFor="let article of sortedArticles(); let i = index"
+    [article]="article"
+    (onArticleDelete)="deleteArticle($event)"
+    [style.background]="getBorderWithRandomColor(i)">
   </app-article>
 </div>

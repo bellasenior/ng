@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   Input,        // <-- added,
-  HostBinding
+  HostBinding,
+  EventEmitter,
+  Output
 } from '@angular/core';
 import { Article } from './article.model'; // <-- added
 
@@ -15,9 +17,10 @@ export class ArticleComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
 
+  @Output() onArticleDelete:  EventEmitter<any>;
+
   constructor() {
-    // article is populated by the Input now,
-    // so we don't need anything here
+    this.onArticleDelete = new EventEmitter();
   }
 
   voteUp(): boolean {
@@ -27,6 +30,11 @@ export class ArticleComponent implements OnInit {
 
   voteDown(): boolean {
     this.article.voteDown();
+    return false;
+  }
+
+  delete(): boolean {
+    this.onArticleDelete.emit(this.article);
     return false;
   }
 

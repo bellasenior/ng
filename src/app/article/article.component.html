@@ -17,13 +17,19 @@
     <li class="item">
       <a href (click)="voteUp()">
         <i class="arrow up icon"></i>
-        upvote 
+        upvote
       </a>
     </li>
-    <li class="item"> 
+    <li class="item">
       <a href (click)="voteDown()">
         <i class="arrow down icon"></i>
         downvote
+      </a>
+    </li>
+    <li class="item">
+      <a href (click)="delete($event)">
+        <i class="arrow delete icon"></i>
+        delete
       </a>
     </li>
   </ul>
