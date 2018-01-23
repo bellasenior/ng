@@ -1,0 +1,66 @@
+
+<form class="ui large form segment"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit(form)"
+      class="ui form"
+      [class.error]="!form.valid && form.touched">
+
+
+  <div class="field"
+      [class.error]="!title.valid && title.touched">
+
+    <label for="titleInput">Title:  {{ titleString }} </label>
+    <input type="text"
+            id="titleInput"
+            placeholder="Enter Title"
+            [formControl]="title"
+            [(ngModel)]="titleString">
+
+    <div [ngClass]="{'valid': title.valid}"
+          class="validation-hint">Title is valid
+    </div>
+
+    <div [ngClass]="{'valid': !title.hasError('required')}"
+          class="validation-hint">Title is required
+    </div>
+
+    <div [ngClass]="{'valid': !title.hasError('invalidTitle')}"
+          class="validation-hint">Title must start with 123
+    </div>
+
+  </div>
+
+
+  <div class="field"
+      [class.error]="!link.valid && link.touched">
+
+    <label for="linkInput">Link: {{ linkString }}</label>
+    <input type="text"
+            id="linkInput"
+            placeholder="Enter Link"
+            [formControl]="link"
+            [(ngModel)]="linkString">
+
+    <div [ngClass]="{'valid': link.valid}"
+          class="validation-hint">Link is valid
+    </div>
+
+    <div [ngClass]="{'valid': !link.hasError('required')}"
+          class="validation-hint">Link is required
+    </div>
+
+    <div [ngClass]="{'valid': !link.hasError('invalidLink')}"
+          class="validation-hint">Link must start with 123
+    </div>
+
+  </div>
+
+
+
+  <div  [ngClass]="{'valid': form.valid}"
+        class="validation-hint">Form is valid</div>
+
+  <button type="submit" class="ui button">Submit</button>
+</form>
+
+
